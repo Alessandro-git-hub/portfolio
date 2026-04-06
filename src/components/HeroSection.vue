@@ -56,6 +56,7 @@ const socialLinks = [
       >
         Building modern web experiences with Vue.js &amp; TypeScript.
         Based in Valencia, Spain — turning complex problems into clean, performant interfaces.
+        Currently pursuing a B.Sc. in Software Engineering part-time while working full-time.
       </p>
 
       <div

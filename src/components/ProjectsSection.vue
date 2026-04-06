@@ -13,14 +13,14 @@ const projects: Project[] = [
     description:
       'Node.js pipeline that aggregates 10+ job board APIs, evaluates listings with a local LLM, and exports results to CSV. Includes an Express.js dashboard with real-time filtering and one-click apply functionality.',
     tags: ['Node.js', 'Express.js', 'REST APIs', 'LLM', 'Dashboard'],
-    github: 'https://github.com/Alessandro-git-hub',
+    github: 'https://github.com/Alessandro-git-hub/job-scraping',
   },
   {
     title: 'devMentor',
     description:
       'Local AI developer workbench featuring a code sandbox, Notion API sync, and prompt chains for a "CTO mentorship" workflow. Designed to streamline developer learning and project planning.',
     tags: ['Node.js', 'AI', 'Notion API', 'Developer Tools'],
-    github: 'https://github.com/Alessandro-git-hub',
+    github: 'https://github.com/Alessandro-git-hub/devMentor',
   },
   {
     title: 'Automation Playbooks',

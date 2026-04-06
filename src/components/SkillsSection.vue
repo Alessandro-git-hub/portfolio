@@ -48,7 +48,7 @@ const categories: SkillCategory[] = [
         Technologies I work with day to day.
       </p>
 
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
         <div
           v-for="(category, index) in categories"
           :key="category.name"

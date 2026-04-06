@@ -23,7 +23,7 @@ const contactLinks = [
 
 <template>
   <section id="contact" class="bg-slate-50 px-6 py-24">
-    <div class="mx-auto max-w-2xl text-center">
+    <div class="mx-auto max-w-4xl text-center">
       <h2
         v-motion
         :initial="{ opacity: 0, y: 20 }"

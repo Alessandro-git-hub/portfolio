@@ -45,6 +45,15 @@ const timeline: TimelineItem[] = [
     tags: ['Vue.js', 'TypeScript', 'E-commerce', 'Architecture'],
     side: 'right',
   },
+  {
+    year: '2024 – Jan 2027',
+    title: 'B.Sc. Software Engineering (part-time)',
+    company: 'Amsterdam Tech',
+    description:
+      'Pursuing a part-time bachelor\'s degree in Software Engineering while working full-time as a Frontend Engineer. Expected graduation January 2027.',
+    tags: ['Software Engineering', 'Computer Science', 'Part-time'],
+    side: 'left',
+  },
 ]
 </script>
 
