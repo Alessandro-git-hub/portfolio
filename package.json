@@ -11,6 +11,7 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "vue": "^3.5.32"
   },
   "devDependencies": {
