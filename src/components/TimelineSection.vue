@@ -25,7 +25,7 @@ const timeline: TimelineItem[] = [
     tags: ['Technical Support', 'Systems'],
   },
   {
-    year: 'Aug 2022 – Apr 2024',
+    year: 'Aug 2022 – Apr 2023',
     title: 'IT Support & Systems Administration',
     company: 'Helloprint',
     description:
@@ -33,7 +33,7 @@ const timeline: TimelineItem[] = [
     tags: ['Node.js', 'PHP', 'Automation', 'AI'],
   },
   {
-    year: 'Apr 2024 – Present',
+    year: 'Apr 2023 – Present',
     title: 'Frontend Software Engineer',
     company: 'Helloprint',
     description:
