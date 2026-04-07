@@ -29,26 +29,30 @@ const categories: SkillCategory[] = [
 </script>
 
 <template>
-  <section id="skills" class="px-6 py-24">
-    <div class="mx-auto max-w-4xl">
-      <h2
-        v-motion
-        :initial="{ opacity: 0, y: 20 }"
-        :visibleOnce="{ opacity: 1, y: 0 }"
-        class="mb-4 text-center text-3xl font-bold tracking-tight text-slate-900"
-      >
-        Technical Skills
-      </h2>
-      <p
-        v-motion
-        :initial="{ opacity: 0, y: 20 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 100 } }"
-        class="mb-16 text-center text-slate-500"
-      >
-        Technologies I work with day to day.
-      </p>
+  <section id="skills" class="relative border-t border-border px-6 py-32 overflow-hidden">
+    <div class="glow-orb h-[350px] w-[350px] bg-accent/5 top-0 -left-20" aria-hidden="true" />
 
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+    <div class="mx-auto max-w-5xl">
+      <div class="mb-20 text-center">
+        <p
+          v-motion
+          :initial="{ opacity: 0, y: 20 }"
+          :visibleOnce="{ opacity: 1, y: 0 }"
+          class="mb-3 font-mono text-sm tracking-widest text-accent uppercase"
+        >
+          Stack
+        </p>
+        <h2
+          v-motion
+          :initial="{ opacity: 0, y: 20 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 100 } }"
+          class="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl"
+        >
+          Technical Skills
+        </h2>
+      </div>
+
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
         <div
           v-for="(category, index) in categories"
           :key="category.name"
@@ -56,14 +60,14 @@ const categories: SkillCategory[] = [
           :initial="{ opacity: 0, y: 20 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: index * 80 } }"
         >
-          <h3 class="mb-3 text-sm font-semibold uppercase tracking-wider text-primary-600">
+          <h3 class="mb-4 font-display text-xs font-bold uppercase tracking-[0.2em] text-accent">
             {{ category.name }}
           </h3>
           <div class="flex flex-wrap gap-2">
             <span
               v-for="skill in category.skills"
               :key="skill"
-              class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 transition-colors hover:border-primary-300 hover:text-primary-700"
+              class="rounded-lg border border-border bg-surface-raised px-3 py-1.5 text-sm text-text-muted transition-all duration-300 hover:border-accent/40 hover:text-accent hover:shadow-[0_0_15px_rgba(232,168,56,0.08)]"
             >
               {{ skill }}
             </span>

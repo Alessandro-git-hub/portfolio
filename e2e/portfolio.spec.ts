@@ -7,7 +7,7 @@ test.describe('Portfolio — core flows', () => {
 
   test('renders hero section with name and title', async ({ page }) => {
     await expect(page.getByRole('heading', { name: 'Alessandro Poggio' })).toBeVisible()
-    await expect(page.locator('#about').getByText('Frontend Software Engineer')).toBeVisible()
+    await expect(page.locator('#about').getByText('Frontend Engineer')).toBeVisible()
   })
 
   test('navigation links are visible on desktop', async ({ page }) => {

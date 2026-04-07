@@ -22,24 +22,36 @@ const contactLinks = [
 </script>
 
 <template>
-  <section id="contact" class="bg-slate-50 px-6 py-24">
-    <div class="mx-auto max-w-4xl text-center">
-      <h2
-        v-motion
-        :initial="{ opacity: 0, y: 20 }"
-        :visibleOnce="{ opacity: 1, y: 0 }"
-        class="mb-4 text-3xl font-bold tracking-tight text-slate-900"
-      >
-        Get in Touch
-      </h2>
-      <p
-        v-motion
-        :initial="{ opacity: 0, y: 20 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 100 } }"
-        class="mb-12 text-slate-500"
-      >
-        I'm always open to new opportunities, interesting projects, or just a good conversation about frontend engineering.
-      </p>
+  <section id="contact" class="relative border-t border-border px-6 py-32 overflow-hidden">
+    <div class="glow-orb h-[400px] w-[400px] bg-accent/5 -top-20 right-1/4" aria-hidden="true" />
+
+    <div class="mx-auto max-w-4xl">
+      <div class="mb-16 text-center">
+        <p
+          v-motion
+          :initial="{ opacity: 0, y: 20 }"
+          :visibleOnce="{ opacity: 1, y: 0 }"
+          class="mb-3 font-mono text-sm tracking-widest text-accent uppercase"
+        >
+          Contact
+        </p>
+        <h2
+          v-motion
+          :initial="{ opacity: 0, y: 20 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 100 } }"
+          class="mb-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl"
+        >
+          Let's build something.
+        </h2>
+        <p
+          v-motion
+          :initial="{ opacity: 0, y: 20 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 150 } }"
+          class="mx-auto max-w-md text-text-muted"
+        >
+          Open to new opportunities, interesting projects, or a good conversation about frontend engineering.
+        </p>
+      </div>
 
       <div
         v-motion
@@ -53,29 +65,31 @@ const contactLinks = [
           :href="link.href"
           target="_blank"
           rel="noopener noreferrer"
-          class="group flex items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white px-6 py-4 transition-all hover:border-primary-300 hover:shadow-sm"
+          class="group flex items-center gap-4 rounded-2xl border border-border bg-surface-raised/50 px-6 py-5 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(232,168,56,0.06)]"
         >
-          <svg
-            v-if="link.label === 'Email'"
-            class="h-5 w-5 text-slate-400 transition-colors group-hover:text-primary-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" :d="link.icon" />
-          </svg>
-          <svg
-            v-else
-            class="h-5 w-5 text-slate-400 transition-colors group-hover:text-primary-600"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path :d="link.icon" />
-          </svg>
-          <div class="text-left">
-            <p class="text-xs font-medium text-slate-400">{{ link.label }}</p>
-            <p class="text-sm font-medium text-slate-700 group-hover:text-primary-600 transition-colors">{{ link.value }}</p>
+          <div class="rounded-xl border border-border bg-surface p-2.5 transition-colors group-hover:border-accent/40">
+            <svg
+              v-if="link.label === 'Email'"
+              class="h-5 w-5 text-text-faint transition-colors group-hover:text-accent"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" :d="link.icon" />
+            </svg>
+            <svg
+              v-else
+              class="h-5 w-5 text-text-faint transition-colors group-hover:text-accent"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path :d="link.icon" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-widest text-text-faint">{{ link.label }}</p>
+            <p class="text-sm font-medium text-text-muted group-hover:text-accent transition-colors duration-300">{{ link.value }}</p>
           </div>
         </a>
       </div>

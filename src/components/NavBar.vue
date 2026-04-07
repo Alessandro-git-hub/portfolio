@@ -27,21 +27,23 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 <template>
   <header
     :class="[
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent',
+      'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+      isScrolled
+        ? 'bg-surface/80 backdrop-blur-xl border-b border-border'
+        : 'bg-transparent',
     ]"
   >
-    <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4" aria-label="Main navigation">
-      <a href="#" class="text-lg font-bold tracking-tight text-slate-900">
-        AP<span class="text-primary-600">.</span>
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5" aria-label="Main navigation">
+      <a href="#" class="font-display text-xl font-bold tracking-tight text-text">
+        AP<span class="text-accent">.</span>
       </a>
 
       <!-- Desktop nav -->
-      <ul class="hidden gap-8 md:flex">
+      <ul class="hidden gap-10 md:flex">
         <li v-for="link in navLinks" :key="link.href">
           <a
             :href="link.href"
-            class="text-sm font-medium text-slate-600 transition-colors hover:text-primary-600"
+            class="font-body text-sm font-medium text-text-muted transition-colors duration-300 hover:text-accent"
           >
             {{ link.label }}
           </a>
@@ -50,13 +52,13 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
       <!-- Mobile menu button -->
       <button
-        class="md:hidden p-2 text-slate-600"
+        class="md:hidden p-2 text-text-muted"
         :aria-expanded="isOpen"
         aria-controls="mobile-menu"
         aria-label="Toggle navigation menu"
         @click="isOpen = !isOpen"
       >
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
           <path v-if="!isOpen" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           <path v-else stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -67,13 +69,13 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
     <div
       v-show="isOpen"
       id="mobile-menu"
-      class="border-t border-slate-100 bg-white px-6 pb-4 md:hidden"
+      class="border-t border-border bg-surface/95 backdrop-blur-xl px-6 pb-6 md:hidden"
     >
-      <ul class="flex flex-col gap-3 pt-3">
+      <ul class="flex flex-col gap-1 pt-4">
         <li v-for="link in navLinks" :key="link.href">
           <a
             :href="link.href"
-            class="block py-2 text-sm font-medium text-slate-600 transition-colors hover:text-primary-600"
+            class="block py-3 font-body text-sm font-medium text-text-muted transition-colors hover:text-accent"
             @click="closeMenu"
           >
             {{ link.label }}

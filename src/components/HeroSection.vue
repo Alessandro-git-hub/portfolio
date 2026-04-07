@@ -19,83 +19,68 @@ const socialLinks = [
 </script>
 
 <template>
-  <section id="about" class="relative flex min-h-screen items-center justify-center px-6 pt-20">
-    <div class="mx-auto max-w-3xl text-center">
-      <p
-        v-motion
-        :initial="{ opacity: 0, y: 20 }"
-        :enter="{ opacity: 1, y: 0, transition: { delay: 100 } }"
-        class="mb-4 font-mono text-sm text-primary-600"
-      >
-        Hello, I'm
-      </p>
+  <section id="about" class="relative flex min-h-screen items-center overflow-x-clip px-4 pt-20 sm:px-6">
+    <!-- Gradient mesh orbs -->
+    <div class="glow-orb h-[300px] w-[300px] bg-accent/8 -top-20 -right-20 sm:h-[500px] sm:w-[500px] sm:-top-40 sm:-right-40" aria-hidden="true" />
+    <div class="glow-orb h-[250px] w-[250px] bg-accent/5 bottom-20 -left-16 sm:h-[400px] sm:w-[400px] sm:-left-32" aria-hidden="true" />
 
-      <h1
-        v-motion
-        :initial="{ opacity: 0, y: 30 }"
-        :enter="{ opacity: 1, y: 0, transition: { delay: 200 } }"
-        class="mb-4 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
-      >
-        Alessandro Poggio
-      </h1>
+    <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_auto] md:items-center">
+      <!-- Left: text, asymmetric alignment -->
+      <div class="max-w-2xl">
+        <p class="animate-fade-up mb-6 font-mono text-sm tracking-widest text-accent uppercase">
+          Frontend Engineer
+        </p>
 
-      <h2
-        v-motion
-        :initial="{ opacity: 0, y: 30 }"
-        :enter="{ opacity: 1, y: 0, transition: { delay: 300 } }"
-        class="mb-6 text-xl font-medium text-slate-500 sm:text-2xl"
-      >
-        Frontend Software Engineer
-      </h2>
+        <h1 class="animate-fade-up-delay-1 mb-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-text sm:text-5xl md:text-6xl lg:text-7xl">
+          Alessandro<br />
+          <span class="text-accent">Poggio</span>
+        </h1>
 
-      <p
-        v-motion
-        :initial="{ opacity: 0, y: 30 }"
-        :enter="{ opacity: 1, y: 0, transition: { delay: 400 } }"
-        class="mx-auto mb-10 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
-      >
-        Building modern web experiences with Vue.js &amp; TypeScript.
-        Based in Valencia, Spain — turning complex problems into clean, performant interfaces.
-        Currently pursuing a B.Sc. in Software Engineering part-time while working full-time.
-      </p>
+        <p class="animate-fade-up-delay-2 mb-8 max-w-lg text-lg leading-relaxed text-text-muted">
+          Building modern web experiences with Vue.js &amp; TypeScript.
+          Based in Valencia, Spain, I turn complex problems into clean, performant interfaces.<br>
+          Currently pursuing a B.Sc. in Software Engineering part-time while working full-time.
+        </p>
 
-      <div
-        v-motion
-        :initial="{ opacity: 0, y: 20 }"
-        :enter="{ opacity: 1, y: 0, transition: { delay: 500 } }"
-        class="flex items-center justify-center gap-5"
-      >
-        <a
-          v-for="link in socialLinks"
-          :key="link.label"
-          :href="link.href"
-          :aria-label="link.label"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded-full p-2 text-slate-400 transition-colors hover:text-primary-600"
-        >
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-            <path :d="link.icon" />
-          </svg>
-        </a>
+        <div class="animate-fade-up-delay-3 flex items-center gap-5">
+          <a
+            v-for="link in socialLinks"
+            :key="link.label"
+            :href="link.href"
+            :aria-label="link.label"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full border border-border p-3 text-text-muted transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_20px_rgba(232,168,56,0.15)]"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+              <path :d="link.icon" />
+            </svg>
+          </a>
+        </div>
       </div>
 
-      <div
-        v-motion
-        :initial="{ opacity: 0 }"
-        :enter="{ opacity: 1, transition: { delay: 800 } }"
-        class="mt-16"
-      >
-        <a
-          href="#timeline"
-          aria-label="Scroll to timeline"
-          class="inline-block animate-bounce text-slate-300 transition-colors hover:text-primary-500"
-        >
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </a>
+      <!-- Right: decorative accent block -->
+      <div class="hidden md:block animate-fade-up-delay-4" aria-hidden="true">
+        <div class="relative h-72 w-72 lg:h-80 lg:w-80">
+          <div class="absolute inset-0 rounded-3xl border border-border bg-surface-raised/50" />
+          <div class="absolute -inset-2 -rotate-6 rounded-3xl border border-accent/20" />
+          <div class="absolute inset-6 flex items-center justify-center rounded-2xl bg-gradient-to-br from-accent/10 to-transparent">
+            <span class="font-display text-8xl font-extrabold text-accent/20 select-none">AP</span>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="animate-fade-up-delay-5 absolute inset-x-0 bottom-10 mx-auto w-fit">
+      <a
+        href="#timeline"
+        aria-label="Scroll to timeline"
+        class="flex flex-col items-center gap-2 text-text-faint transition-colors hover:text-accent"
+      >
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll</span>
+        <div class="h-8 w-px animate-pulse bg-gradient-to-b from-accent/60 to-transparent" />
+      </a>
     </div>
   </section>
 </template>
