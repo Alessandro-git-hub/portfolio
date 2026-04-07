@@ -7,6 +7,7 @@ const isScrolled = ref(false)
 const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Timeline', href: '#timeline' },
+  { label: 'About Me', href: '#about-me' },
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
