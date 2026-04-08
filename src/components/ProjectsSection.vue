@@ -25,18 +25,25 @@ const projects: Project[] = [
     github: 'https://github.com/Alessandro-git-hub/devMentor',
   },
   {
-    title: 'Automation Playbooks',
-    description:
-      'Suite of ~20 Rundeck API automation jobs built to eliminate manual HR/IT tasks. Covers onboarding, offboarding, account provisioning, and system health checks — saving hours of repetitive work weekly.',
-    tags: ['PHP', 'Rundeck', 'REST APIs', 'Automation'],
-    github: 'https://github.com/Alessandro-git-hub',
-  },
-  {
     title: 'MyAbstractVM',
     description:
       'A custom virtual machine that parses and executes a small assembly language. Manages a typed value stack with safe arithmetic, error handling, and a built-in interpreter — built with interfaces, polymorphism, and strict memory management.',
     tags: ['C++', 'VM', 'Interpreter', 'OOP'],
     github: 'https://github.com/Alessandro-git-hub/cpp_my-abstract-vm',
+  },
+  {
+    title: 'MySQLite',
+    description:
+      'A simplified SQLite built on CSV files. Features a chainable query interface supporting SELECT, INSERT, UPDATE, DELETE, WHERE, JOIN, and ORDER — plus a CLI that parses SQL-like commands for lightweight, file-based CRUD operations.',
+    tags: ['Ruby', 'SQL', 'CLI', 'CSV'],
+    github: 'https://github.com/Alessandro-git-hub/my-sqlite',
+  },
+  {
+    title: 'Automation Playbooks',
+    description:
+      'Suite of ~20 Rundeck API automation jobs built to eliminate manual HR/IT tasks. Covers onboarding, offboarding, account provisioning, and system health checks — saving hours of repetitive work weekly.',
+    tags: ['PHP', 'Rundeck', 'REST APIs', 'Automation'],
+    github: 'https://github.com/Alessandro-git-hub',
   },
 ]
 
