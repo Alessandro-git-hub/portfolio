@@ -4,9 +4,6 @@
       <p class="font-mono text-xs tracking-wider text-text-faint">
         &copy; {{ new Date().getFullYear() }} Alessandro Poggio
       </p>
-      <p class="font-mono text-xs text-text-faint">
-        Built with <span class="text-accent">Vue.js</span> &amp; <span class="text-accent">Tailwind CSS</span>
-      </p>
       <div class="flex gap-5">
         <a
           href="https://github.com/Alessandro-git-hub"
