@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, onMounted, nextTick } from 'vue'
+
 interface Project {
   title: string
   description: string
@@ -19,7 +21,7 @@ const projects: Project[] = [
     title: 'devMentor',
     description:
       'Local AI developer workbench featuring a code sandbox, Notion API sync, and prompt chains for a "CTO mentorship" workflow. Designed to streamline developer learning and project planning.',
-    tags: ['Node.js', 'AI', 'Notion API', 'Developer Tools'],
+    tags: ['AI', 'Notion API', 'Developer Tools'],
     github: 'https://github.com/Alessandro-git-hub/devMentor',
   },
   {
@@ -29,7 +31,60 @@ const projects: Project[] = [
     tags: ['PHP', 'Rundeck', 'REST APIs', 'Automation'],
     github: 'https://github.com/Alessandro-git-hub',
   },
+  {
+    title: 'MyAbstractVM',
+    description:
+      'A custom virtual machine that parses and executes a small assembly language. Manages a typed value stack with safe arithmetic, error handling, and a built-in interpreter — built with interfaces, polymorphism, and strict memory management.',
+    tags: ['C++', 'VM', 'Interpreter', 'OOP'],
+    github: 'https://github.com/Alessandro-git-hub/cpp_my-abstract-vm',
+  },
 ]
+
+// Triple the cards: [set1 | set2 (center) | set3] for seamless infinite loop
+const repeatedProjects = [...projects, ...projects, ...projects]
+
+const track = ref<HTMLElement | null>(null)
+
+function getCardStep(): number {
+  if (!track.value) return 0
+  const card = track.value.querySelector('.carousel-card') as HTMLElement
+  if (!card) return 0
+  return card.offsetWidth + 24 // gap-6
+}
+
+onMounted(async () => {
+  await nextTick()
+  if (track.value) {
+    // Start at the middle set (no animation)
+    track.value.scrollLeft = getCardStep() * projects.length
+  }
+})
+
+function scroll(direction: 'prev' | 'next') {
+  if (!track.value) return
+  const step = getCardStep()
+  track.value.scrollBy({
+    left: direction === 'next' ? step : -step,
+    behavior: 'smooth',
+  })
+}
+
+function handleScrollEnd() {
+  if (!track.value) return
+  const step = getCardStep()
+  if (step === 0) return
+  const setLen = projects.length
+  const logicalIndex = Math.round(track.value.scrollLeft / step)
+
+  // If we've drifted into the first or third set, silently jump to equivalent position in center set
+  if (logicalIndex < setLen || logicalIndex >= 2 * setLen) {
+    const centerIndex = ((logicalIndex % setLen) + setLen) % setLen + setLen
+    track.value.style.scrollBehavior = 'auto'
+    track.value.scrollLeft = centerIndex * step
+    track.value.offsetHeight // force reflow before re-enabling smooth
+    track.value.style.scrollBehavior = ''
+  }
+}
 </script>
 
 <template>
@@ -56,19 +111,43 @@ const projects: Project[] = [
         </h2>
       </div>
 
-      <div class="grid gap-6 md:grid-cols-3">
+      <!-- Carousel navigation -->
+      <div class="mb-8 flex items-center justify-end gap-3">
+        <button
+          @click="scroll('prev')"
+          aria-label="Previous projects"
+          class="rounded-full border border-border p-2.5 text-text-muted transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_20px_rgba(232,168,56,0.15)]"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <button
+          @click="scroll('next')"
+          aria-label="Next projects"
+          class="rounded-full border border-border p-2.5 text-text-muted transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_20px_rgba(232,168,56,0.15)]"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Scrollable track -->
+      <div
+        ref="track"
+        class="carousel-track flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+        @scrollend="handleScrollEnd"
+      >
         <component
           :is="project.github ? 'a' : 'article'"
-          v-for="(project, index) in projects"
-          :key="project.title"
-          v-motion
-          :initial="{ opacity: 0, y: 30 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: index * 100 } }"
+          v-for="(project, idx) in repeatedProjects"
+          :key="idx"
           :href="project.github || undefined"
           :target="project.github ? '_blank' : undefined"
           :rel="project.github ? 'noopener noreferrer' : undefined"
-          class="group relative flex flex-col rounded-2xl border border-border bg-surface-raised/50 p-6 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(232,168,56,0.06)]"
-          :class="[index === 1 ? 'md:-translate-y-6' : '', project.github ? 'cursor-pointer' : '']"
+          class="carousel-card group relative flex w-[85vw] flex-shrink-0 flex-col snap-start rounded-2xl border border-border bg-surface-raised/50 p-6 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(232,168,56,0.06)] md:w-[calc((100%-48px)/3)]"
+          :class="[project.github ? 'cursor-pointer' : '']"
         >
           <!-- Top row -->
           <div class="mb-5 flex items-center justify-between">
@@ -131,3 +210,13 @@ const projects: Project[] = [
     </div>
   </section>
 </template>
+
+<style scoped>
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+.carousel-track {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>
