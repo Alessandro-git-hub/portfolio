@@ -95,7 +95,7 @@ const timeline: TimelineItem[] = [
         <div class="flex gap-1.5 pl-9">
           <span class="rounded-full border border-border bg-surface px-2.5 py-0.5 text-xs font-medium text-text-faint">C</span>
           <span class="rounded-full border border-border bg-surface px-2.5 py-0.5 text-xs font-medium text-text-faint">C++</span>
-          <span class="rounded-full border border-border bg-surface px-2.5 py-0.5 text-xs font-medium text-text-faint">Embedded Programming</span>
+            <span class="rounded-full border border-border bg-surface px-2.5 py-0.5 text-xs font-medium text-text-faint">Embedded Systems</span>
         </div>
       </div>
 
