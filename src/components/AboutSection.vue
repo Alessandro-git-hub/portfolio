@@ -64,7 +64,9 @@ const traits = [
               When I'm not writing code, you'll find me watching a football match, debating F1 race
               strategies, or working out at the gym. I'm curious by nature, I love understanding how
               things work, whether it's a JavaScript engine or a racing car's aerodynamics. That same
-              curiosity is what pulled me into software engineering and keeps me learning every day.
+              curiosity is what pulled me into software engineering and keeps me learning every day.<br>
+              Lately, I've been diving deeper into C and C++, exploring systems programming and
+              building toward a future in embedded engineering.
             </p>
           </div>
 
@@ -73,12 +75,12 @@ const traits = [
             v-motion
             :initial="{ opacity: 0, y: 20 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 250 } }"
-            class="mt-8 flex flex-wrap justify-start gap-2"
+            class="mt-8 flex flex-wrap gap-2"
           >
             <span
               v-for="trait in traits"
               :key="trait.text"
-              class="flex items-center gap-1.5 rounded-full border border-border bg-surface-raised/50 px-3 py-1.5 text-xs text-text-muted transition-colors duration-300 hover:border-accent/30 hover:text-text"
+              class="flex items-center gap-1.5 rounded-full border border-border bg-surface-raised/50 px-4 py-1.5 text-xs text-text-muted transition-colors duration-300 hover:border-accent/30 hover:text-text"
             >
               <span>{{ trait.emoji }}</span>
               <span>{{ trait.text }}</span>

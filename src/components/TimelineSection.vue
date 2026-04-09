@@ -81,15 +81,22 @@ const timeline: TimelineItem[] = [
         v-motion
         :initial="{ opacity: 0, x: -12 }"
         :visibleOnce="{ opacity: 1, x: 0, transition: { delay: 200 } }"
-        class="mb-16 flex items-center gap-4 rounded-xl border-l-2 border-accent bg-surface-raised/60 px-5 py-4"
+        class="mb-16 flex flex-col gap-3 rounded-xl border-l-2 border-accent bg-surface-raised/60 px-5 py-4"
       >
-        <svg class="h-5 w-5 flex-shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15v3.75m0 0v1.5a1.5 1.5 0 0 0 1.5 1.5h7.5a1.5 1.5 0 0 0 1.5-1.5v-1.5m-10.5 0h10.5" />
-        </svg>
-        <p class="text-sm text-text-muted">
-          Currently pursuing a <span class="font-medium text-text">B.Sc. in Software Engineering</span> at <span class="font-medium text-text">Amsterdam Tech</span>
-          <span class="ml-2 inline-block rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">Part-time</span>
-        </p>
+        <div class="flex items-start gap-4">
+          <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15v3.75m0 0v1.5a1.5 1.5 0 0 0 1.5 1.5h7.5a1.5 1.5 0 0 0 1.5-1.5v-1.5m-10.5 0h10.5" />
+          </svg>
+          <div class="text-sm text-text-muted">
+            <span>Currently pursuing a <span class="font-medium text-text">B.Sc. in Software Engineering</span> at <span class="font-medium text-text">Amsterdam Tech</span></span>
+            <span class="mt-2 block sm:mt-0 sm:inline sm:ml-2 w-fit rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">Part-time</span>
+          </div>
+        </div>
+        <div class="flex gap-1.5 pl-9">
+          <span class="rounded-full border border-border bg-surface px-2.5 py-0.5 text-xs font-medium text-text-faint">C</span>
+          <span class="rounded-full border border-border bg-surface px-2.5 py-0.5 text-xs font-medium text-text-faint">C++</span>
+          <span class="rounded-full border border-border bg-surface px-2.5 py-0.5 text-xs font-medium text-text-faint">Embedded Programming</span>
+        </div>
       </div>
 
       <div class="relative">

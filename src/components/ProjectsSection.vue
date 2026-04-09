@@ -11,6 +11,13 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: 'Helloprint Rebranding',
+    description:
+      'Full redesign and rebranding of Helloprint\'s e-commerce platform — new visual identity, component library, and storefront — shipped across multiple languages and domains while keeping all shops running in production.',
+    tags: ['Vue.js', 'TypeScript', 'BEM', 'SCSS', 'E-commerce'],
+    demo: 'https://www.helloprint.com/en-gb/',
+  },
+  {
     title: 'Job Scraper AI',
     description:
       'Node.js pipeline that aggregates 10+ job board APIs, evaluates listings with a local LLM, and exports results to CSV. Includes an Express.js dashboard with real-time filtering and one-click apply functionality.',
@@ -44,7 +51,7 @@ const projects: Project[] = [
       'Suite of ~20 Rundeck API automation jobs built to eliminate manual HR/IT tasks. Covers onboarding, offboarding, account provisioning, and system health checks — saving hours of repetitive work weekly.',
     tags: ['PHP', 'Rundeck', 'REST APIs', 'Automation'],
     github: 'https://github.com/Alessandro-git-hub',
-  },
+  }
 ]
 
 // Triple the cards: [set1 | set2 (center) | set3] for seamless infinite loop
@@ -147,14 +154,14 @@ function handleScrollEnd() {
         @scrollend="handleScrollEnd"
       >
         <component
-          :is="project.github ? 'a' : 'article'"
+          :is="project.github || project.demo ? 'a' : 'article'"
           v-for="(project, idx) in repeatedProjects"
           :key="idx"
-          :href="project.github || undefined"
-          :target="project.github ? '_blank' : undefined"
-          :rel="project.github ? 'noopener noreferrer' : undefined"
+          :href="project.github || project.demo || undefined"
+          :target="project.github || project.demo ? '_blank' : undefined"
+          :rel="project.github || project.demo ? 'noopener noreferrer' : undefined"
           class="carousel-card group relative flex w-[85vw] flex-shrink-0 flex-col snap-start rounded-2xl border border-border bg-surface-raised/50 p-6 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(232,168,56,0.06)] md:w-[calc((100%-48px)/3)]"
-          :class="[project.github ? 'cursor-pointer' : '']"
+          :class="[project.github || project.demo ? 'cursor-pointer' : '']"
         >
           <!-- Top row -->
           <div class="mb-5 flex items-center justify-between">
