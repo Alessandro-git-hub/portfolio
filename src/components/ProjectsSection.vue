@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from 'vue'
+import { ref } from 'vue'
 
 interface Project {
   title: string
@@ -54,50 +54,17 @@ const projects: Project[] = [
   }
 ]
 
-// Triple the cards: [set1 | set2 (center) | set3] for seamless infinite loop
-const repeatedProjects = [...projects, ...projects, ...projects]
-
 const track = ref<HTMLElement | null>(null)
-
-function getCardStep(): number {
-  if (!track.value) return 0
-  const card = track.value.querySelector('.carousel-card') as HTMLElement
-  if (!card) return 0
-  return card.offsetWidth + 24 // gap-6
-}
-
-onMounted(async () => {
-  await nextTick()
-  if (track.value) {
-    // Start at the middle set (no animation)
-    track.value.scrollLeft = getCardStep() * projects.length
-  }
-})
 
 function scroll(direction: 'prev' | 'next') {
   if (!track.value) return
-  const step = getCardStep()
+  const card = track.value.querySelector('.carousel-card') as HTMLElement
+  if (!card) return
+  const step = card.offsetWidth + 24
   track.value.scrollBy({
     left: direction === 'next' ? step : -step,
     behavior: 'smooth',
   })
-}
-
-function handleScrollEnd() {
-  if (!track.value) return
-  const step = getCardStep()
-  if (step === 0) return
-  const setLen = projects.length
-  const logicalIndex = Math.round(track.value.scrollLeft / step)
-
-  // If we've drifted into the first or third set, silently jump to equivalent position in center set
-  if (logicalIndex < setLen || logicalIndex >= 2 * setLen) {
-    const centerIndex = ((logicalIndex % setLen) + setLen) % setLen + setLen
-    track.value.style.scrollBehavior = 'auto'
-    track.value.scrollLeft = centerIndex * step
-    track.value.offsetHeight // force reflow before re-enabling smooth
-    track.value.style.scrollBehavior = ''
-  }
 }
 </script>
 
@@ -151,12 +118,11 @@ function handleScrollEnd() {
       <div
         ref="track"
         class="carousel-track flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
-        @scrollend="handleScrollEnd"
       >
         <component
           :is="project.github || project.demo ? 'a' : 'article'"
-          v-for="(project, idx) in repeatedProjects"
-          :key="idx"
+          v-for="project in projects"
+          :key="project.title"
           :href="project.github || project.demo || undefined"
           :target="project.github || project.demo ? '_blank' : undefined"
           :rel="project.github || project.demo ? 'noopener noreferrer' : undefined"
