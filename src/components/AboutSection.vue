@@ -65,8 +65,6 @@ const traits = [
               strategies, or working out at the gym. I'm curious by nature, I love understanding how
               things work, whether it's a JavaScript engine or a racing car's aerodynamics. That same
               curiosity is what pulled me into software engineering and keeps me learning every day.<br>
-              Lately, I've been diving deeper into C and C++, exploring systems programming and
-              building toward a future in embedded engineering.
             </p>
           </div>
 

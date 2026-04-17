@@ -78,6 +78,22 @@ const categories: SkillCategory[] = [
           </div>
         </div>
       </div>
+
+      <!-- How I use AI callout -->
+      <div
+        v-motion
+        :initial="{ opacity: 0, y: 20 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 500 } }"
+        class="mt-12 sm:mt-16 flex gap-3 rounded-xl border border-border bg-surface-raised/40 px-4 py-3"
+      >
+        <span class="mt-0.5 text-accent">✦</span>
+        <div>
+          <p class="mb-0.5 font-display text-xs font-bold uppercase tracking-widest text-accent">How I use AI</p>
+          <p class="text-sm text-text-muted leading-relaxed">
+            I treat AI like a senior engineer I can ask anything, it helps me understand the why, not just copy the what.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 </template>
