@@ -6,6 +6,7 @@ import TimelineSection from './components/TimelineSection.vue'
 import AboutSection from './components/AboutSection.vue'
 import ProjectsSection from './components/ProjectsSection.vue'
 import SkillsSection from './components/SkillsSection.vue'
+import RecommendationsSection from './components/RecommendationsSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import FooterSection from './components/FooterSection.vue'
 
@@ -21,6 +22,7 @@ inject()
       <AboutSection />
       <ProjectsSection />
       <SkillsSection />
+      <RecommendationsSection />
       <ContactSection />
     </main>
     <FooterSection />
