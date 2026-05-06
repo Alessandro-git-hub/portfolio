@@ -9,36 +9,36 @@ interface TimelineItem {
 
 const timeline: TimelineItem[] = [
   {
-    year: '2019 – 2021',
+    year: 'Oct 2020 – Dec 2021',
     title: 'Junior Project Manager / IT Responsible',
     company: 'H&M',
     description:
-      'Managed IT infrastructure and coordinated project rollouts across retail locations. First hands-on experience bridging business operations with technology solutions.',
+      'Managed IT infrastructure, system configuration, and troubleshooting for customer service centers, ensuring uptime and operational continuity.',
     tags: ['Project Management', 'IT Infrastructure'],
   },
   {
-    year: '2021 – 2022',
+    year: 'Jan 2022 – Jul 2022',
     title: 'Technical Specialist',
     company: 'Mercedes-Benz',
     description:
-      'Provided technical expertise in a fast-paced automotive environment. Deepened systems knowledge and developed a passion for building tools that solve real problems.',
+      'Decreased average incident resolution time by ~2 hours across customer service centers, by redesigning the escalation workflow and implementing a standardized troubleshooting runbook.',
     tags: ['Technical Support', 'Systems'],
   },
   {
     year: 'Aug 2022 – Apr 2023',
-    title: 'IT Support & Systems Administration',
+    title: 'Systems & Automation Engineer',
     company: 'Helloprint',
     description:
-      'Built an AI-powered Slack bot with Node.js that reduced support tickets by ~40%. Automated 20+ onboarding workflows using PHP & Rundeck, eliminating hours of manual HR/IT work.',
+      'Reduced IT support ticket volume by ~40% by deploying a Node.js Slack bot using AI to automate FAQ resolution and employee self-service. Automated onboarding/offboarding with PHP & Rundeck, cutting account provisioning time by 90%.',
     tags: ['Node.js', 'PHP', 'Automation', 'AI'],
   },
   {
-    year: 'Apr 2023 – Present',
-    title: 'Frontend Software Engineer',
+    year: 'Apr 2023 – Apr 2026',
+    title: 'Software Engineer',
     company: 'Helloprint',
     description:
-      'Rebuilding a legacy PHP/Smarty e-commerce storefront into a modern Vue.js component architecture. Driving frontend modernization with TypeScript, component design, and performance optimization.',
-    tags: ['Vue.js', 'TypeScript', 'E-commerce', 'Architecture'],
+      'Rebuilt the main e-commerce storefront from PHP/Smarty to Vue.js. Built features end-to-end across frontend and backend, including migrating form authorization from PHP controllers to a REST API. Maintained React-based Contentful and Algolia workers, improved SEO, and introduced shared components that reduced bugs across the team.',
+    tags: ['Vue.js', 'React', 'PHP', 'TypeScript', 'REST APIs'],
   },
 ]
 </script>

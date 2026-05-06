@@ -20,14 +20,14 @@ const projects: Project[] = [
   {
     title: 'Job Scraper AI',
     description:
-      'Node.js pipeline that aggregates 10+ job board APIs, evaluates listings with a local LLM, and exports results to CSV. Includes an Express.js dashboard with real-time filtering and one-click apply functionality.',
+      'Pulls job listings from 10+ APIs, scores them against my profile using a local LLM, and stores results in a database. Includes an Express.js dashboard for filtering and applying. Built end-to-end — ingestion, scoring, storage, and UI.',
     tags: ['Node.js', 'Express.js', 'REST APIs', 'LLM', 'Dashboard'],
     github: 'https://github.com/Alessandro-git-hub/job-scraping',
   },
   {
     title: 'devMentor',
     description:
-      'Local AI developer workbench featuring a code sandbox, Notion API sync, and prompt chains for a "CTO mentorship" workflow. Designed to streamline developer learning and project planning.',
+      'Local developer tool with a code sandbox and Notion API integration that tracks learning progress automatically. Designed to simulate a structured mentorship workflow for daily practice.',
     tags: ['AI', 'Notion API', 'Developer Tools'],
     github: 'https://github.com/Alessandro-git-hub/devMentor',
   },
@@ -48,7 +48,7 @@ const projects: Project[] = [
   {
     title: 'Automation Playbooks',
     description:
-      'Suite of ~20 Rundeck API automation jobs built to eliminate manual HR/IT tasks. Covers onboarding, offboarding, account provisioning, and system health checks — saving hours of repetitive work weekly.',
+      '~20 Rundeck automation jobs that eliminated manual HR and IT onboarding tasks, saving around 5 hours per month across the ops team.',
     tags: ['PHP', 'Rundeck', 'REST APIs', 'Automation'],
     github: 'https://github.com/Alessandro-git-hub',
   }

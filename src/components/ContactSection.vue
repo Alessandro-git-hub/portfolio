@@ -49,7 +49,7 @@ const contactLinks = [
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 150 } }"
           class="mx-auto max-w-md text-text-muted"
         >
-          Open to new opportunities, interesting projects, or a good conversation about frontend engineering.
+          Open to new opportunities, interesting projects, or a good conversation about software engineering.
         </p>
       </div>
 

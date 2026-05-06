@@ -28,7 +28,7 @@ const socialLinks = [
       <!-- Left: text, asymmetric alignment -->
       <div class="max-w-2xl">
         <p class="animate-fade-up mb-6 font-mono text-sm tracking-widest text-accent uppercase">
-          Frontend Engineer
+          Software Engineer
         </p>
 
         <h1 class="animate-fade-up-delay-1 mb-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-text sm:text-5xl md:text-6xl lg:text-7xl">
@@ -37,9 +37,9 @@ const socialLinks = [
         </h1>
 
         <p class="animate-fade-up-delay-2 mb-8 max-w-lg text-lg leading-relaxed text-text-muted">
-          Building modern web experiences with Vue.js &amp; TypeScript.
-          Based in Valencia, Spain, I turn complex problems into clean, performant interfaces.<br>
-          Currently pursuing a B.Sc. in Software Engineering part-time while working full-time.
+          Software Engineer with 3+ years of experience building e-commerce websites and internal tools.
+          I work across the stack, from Vue.js and React frontends to Node.js, Express, and PHP backends.
+          Have a track record of modernizing old systems and automating manual processes that slow teams down.
         </p>
 
         <div class="animate-fade-up-delay-3 flex items-center gap-5">

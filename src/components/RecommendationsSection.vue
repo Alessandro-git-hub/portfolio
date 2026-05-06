@@ -1,6 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
+const track = ref<HTMLElement | null>(null)
+
+function scroll(direction: 'prev' | 'next') {
+  if (!track.value) return
+  const card = track.value.querySelector('.carousel-card') as HTMLElement
+  if (!card) return
+  const step = card.offsetWidth + 24
+  track.value.scrollBy({
+    left: direction === 'next' ? step : -step,
+    behavior: 'smooth',
+  })
+}
+
 interface Recommendation {
   name: string
   role: string
@@ -40,6 +53,15 @@ const recommendations: Recommendation[] = [
     relation: 'Company leadership',
     source: 'letter',
     text: `It is a distinct pleasure to recommend Alessandro Poggio for a position within your organization. Having worked closely with Alessandro, I have witnessed his exceptional trajectory at HelloPrint, defined by continuous evolution and a total commitment to technical excellence.\n\nAlessandro began his journey with us in the IT team, where he quickly proved that his potential extended far beyond technical support. Driven by his extraordinary self-learning capacity and proactivity, he successfully transitioned into the development team as a Front End Developer. In this role, he didn't just write code; he challenged and improved the way we build our products.\n\nKey attributes: Autonomy & Ownership — He possesses a remarkable ability to work autonomously, solving complex problems with minimal supervision and maximum efficiency. Growth Mindset — His transition from IT to Development embodies a relentless hunger for learning new technologies. Professionalism & Rigor — Even under high pressure or tight deadlines, Alessandro maintains a very high standard of quality and ensures clear communication with the team.\n\nThe combination of his technical background in systems and his vision as a developer makes him a highly valuable hybrid profile. I have no doubt that Alessandro will bring the same level of innovation and energy to your company that he consistently demonstrated at HelloPrint.`,
+  },
+  {
+    name: 'Dan de Vries',
+    role: 'Founder',
+    company: 'ProdBase',
+    date: 'April 2026',
+    relation: 'Direct manager',
+    source: 'linkedin',
+    text: `What makes Alessandro stand out is his background as a high-level competitive soccer player, which clearly informs his professional work ethic. He brings a true team-player mentality to the office, he is loyal, highly adaptable to changing circumstances, and deeply committed to the collective success of the company.\n\nIn our short time working together, I found him to be a collaborative professional who is always eager to learn and open to feedback. Just as in sports, he understands the importance of communication and is never afraid to share his perspective to help the team move forward. Alessandro is a supportive colleague with a great 'can-do' attitude, and his unique blend of athletic discipline and professional dedication makes him a valuable asset to any collaborative environment.`,
   },
 ]
 
@@ -106,14 +128,40 @@ function paragraphs(text: string) {
         </p>
       </div>
 
-      <div class="grid gap-6 lg:grid-cols-3 items-start">
+      <!-- Carousel navigation -->
+      <div class="mb-8 flex items-center justify-end gap-3">
+        <button
+          @click="scroll('prev')"
+          aria-label="Previous recommendations"
+          class="rounded-full border border-border p-2.5 text-text-muted transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_20px_rgba(232,168,56,0.15)]"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <button
+          @click="scroll('next')"
+          aria-label="Next recommendations"
+          class="rounded-full border border-border p-2.5 text-text-muted transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_20px_rgba(232,168,56,0.15)]"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Scrollable track -->
+      <div
+        ref="track"
+        class="carousel-track flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+      >
         <article
           v-for="(rec, index) in recommendations"
           :key="rec.name"
           v-motion
           :initial="{ opacity: 0, y: 20 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: index * 100 } }"
-          class="relative flex flex-col rounded-2xl border border-border bg-surface-raised/50 p-6 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(232,168,56,0.06)]"
+          class="carousel-card relative flex w-[85vw] flex-shrink-0 flex-col snap-start rounded-2xl border border-border bg-surface-raised/50 p-6 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(232,168,56,0.06)] md:w-[calc((100%-48px)/3)]"
         >
           <!-- Header -->
           <div class="mb-5 flex items-start justify-between gap-4">
@@ -232,6 +280,14 @@ function paragraphs(text: string) {
 </template>
 
 <style scoped>
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+.carousel-track {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .modal-enter-active,
 .modal-leave-active {
   transition: opacity 0.2s ease;
